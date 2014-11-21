@@ -43,41 +43,41 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let kCellIdentifier: String = "MyCell"
+        let kCellIdentifier: String = "Cell"
         
         //the tablecell is optional to see if we can reuse cell
-        var cell : UITableViewCell?
-        cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as?
-        UITableViewCell
+   //     var cell : CustomCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as CustomCell
+        let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomCell
+
         
         //If we did not get a reuseable cell, then create a new one
-        if !(cell? != nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:
-                kCellIdentifier)
-        }
+//        if (cell != nil) {
+//            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:
+//                kCellIdentifier)
+//        }
         
         //Get our data row
         var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
         
         //Set the track name
         let cellText: String = rowData["trackName"] as String!
-        cell?.textLabel?.text = cellText
+        cell.leftLabel.text = cellText
         // Get the track censored name
-        var trackCensorName: NSString = rowData["trackCensoredName"] as NSString
-        cell!.detailTextLabel?.text = trackCensorName
+        var trackCensorName: NSString = rowData["collectionCensoredName"] as NSString
+        cell.centerLabel.text = trackCensorName
         
-        cell!.imageView?.image = UIImage(named: "loading")
+        cell.cellImage.image = UIImage(named: "loading")
         
         
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            
+        
             // Grab the artworkUrl60 key to get an image URL
             var urlString: NSString = rowData["artworkUrl60"] as NSString
             
             // Check the image cache for the key (using the image URL as key)
             var image: UIImage? = self.imageCache.valueForKey(urlString) as? UIImage
             
-            if image != nil {
+            if urlString != "" {
                 // If the image does not exist in the cache then we need to download it
                 var imgURL: NSURL = NSURL(string: urlString)!
                 
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                             
                             // Store the image in the cache
                             self.imageCache.setValue(image, forKey: urlString)
-                            cell!.imageView?.image = image
+                            cell.imageView?.image = image
                             tableView.reloadData()
                         }
                         else {
@@ -105,19 +105,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
             }
             else {
-                cell?.imageView?.image = image
+                cell.imageView?.image = image
             }
-            
+        
             
         })
         
         
-        return cell!
+        return cell
 
         
     }
     
 
-    
-    
 }

@@ -14,6 +14,7 @@
 		A420C4AD1A1E03BA005DB728 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A420C4AB1A1E03BA005DB728 /* LaunchScreen.xib */; };
 		A420C4B91A1E03BA005DB728 /* iTunesSearchSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420C4B81A1E03BA005DB728 /* iTunesSearchSwiftTests.swift */; };
 		A420C4C31A1E044D005DB728 /* ITunesSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420C4C21A1E044D005DB728 /* ITunesSearchAPI.swift */; };
+		A4FEB26D1A1E7103001002F7 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FEB26C1A1E7103001002F7 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		A420C4B71A1E03BA005DB728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A420C4B81A1E03BA005DB728 /* iTunesSearchSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchSwiftTests.swift; sourceTree = "<group>"; };
 		A420C4C21A1E044D005DB728 /* ITunesSearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITunesSearchAPI.swift; sourceTree = "<group>"; };
+		A4FEB26C1A1E7103001002F7 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				A420C4A21A1E03BA005DB728 /* AppDelegate.swift */,
 				A420C4A41A1E03BA005DB728 /* ViewController.swift */,
+				A4FEB26C1A1E7103001002F7 /* CustomCell.swift */,
 				A420C4A61A1E03BA005DB728 /* Main.storyboard */,
 				A420C4A91A1E03BA005DB728 /* Images.xcassets */,
 				A420C4AB1A1E03BA005DB728 /* LaunchScreen.xib */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A420C4C31A1E044D005DB728 /* ITunesSearchAPI.swift in Sources */,
+				A4FEB26D1A1E7103001002F7 /* CustomCell.swift in Sources */,
 				A420C4A51A1E03BA005DB728 /* ViewController.swift in Sources */,
 				A420C4A31A1E03BA005DB728 /* AppDelegate.swift in Sources */,
 			);
@@ -409,6 +413,7 @@
 				A420C4BE1A1E03BA005DB728 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A420C4BF1A1E03BA005DB728 /* Build configuration list for PBXNativeTarget "iTunesSearchSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				A420C4C11A1E03BA005DB728 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
