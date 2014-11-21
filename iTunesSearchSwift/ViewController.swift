@@ -1,25 +1,46 @@
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ITunesSearchAPIProtocol, UISearchBarDelegate, UISearchDisplayDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ITunesSearchAPIProtocol, UISearchBarDelegate, UISearchDisplayDelegate, UITextFieldDelegate {
     
-    
-    @IBOutlet weak var searchItem: UISearchBar!
+
+
+    @IBOutlet weak var searchItem: UITextField! = UITextField()
     
     
     @IBOutlet var appsTableView : UITableView!
     var api: ITunesSearchAPI = ITunesSearchAPI()
     var tableData: NSArray = NSArray()
     var imageCache = NSMutableDictionary()
+//    searchItem.text = "Jimmy Buffett"
+
+    @IBAction func searchBtn(sender: AnyObject) {
+        api.delegate = self;
+        api.searchItunesFor(searchItem.text)
+        if (searchItem.text.isEmpty) {
+            searchItem.text = "Taylor"
+        }
+        
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        println("return key pressed")
+        return true
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        println("Touch screen")
+        self.view.endEditing(true)
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchItem.delegate = self // To hide keyboard
+        
         // Do any additional setup after loading the view, typically from a nib.
         
-        api.delegate = self;
-        searchItem.text = "Jimmy Buffett"
-        api.searchItunesFor(searchItem.text)
-    }
+            }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
