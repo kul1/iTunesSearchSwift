@@ -1,8 +1,9 @@
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ITunesSearchAPIProtocol {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ITunesSearchAPIProtocol, UISearchBarDelegate, UISearchDisplayDelegate {
     
     
+    @IBOutlet weak var searchItem: UISearchBar!
     
     
     @IBOutlet var appsTableView : UITableView!
@@ -16,7 +17,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         
         api.delegate = self;
-        api.searchItunesFor("Jimmy Buffett")
+        searchItem.text = "Jimmy Buffett"
+        api.searchItunesFor(searchItem.text)
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,15 +48,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let kCellIdentifier: String = "Cell"
         
         //the tablecell is optional to see if we can reuse cell
-   //     var cell : CustomCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as CustomCell
         let cell:CustomCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomCell
 
         
-        //If we did not get a reuseable cell, then create a new one
-//        if (cell != nil) {
-//            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:
-//                kCellIdentifier)
-//        }
+
         
         //Get our data row
         var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
